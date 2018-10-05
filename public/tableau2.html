@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head> <b><h1 style="font-size:250%;"><h1 style="background-color:#800000;"><p style="color:white;">Walmart Sales Analysis</h1></h1></b></head></p>
+    <body bgcolor=" #303030">
+        <p style="background-color:black;">
+            <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style> 
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+</style>
+<link rel="stylesheet"
+type="text/css"
+href="css/jquery-ui-lightness/jquery-ui.min.css" />
+<script type="text/javascript" src="js/jquery.js">
+</script>
+
+<script type="text/javascript" src="js/jquery-ui-lightness/jquery-ui.min.js">
+</script>
+
+<script type="text/javascript" src="js/autocomplete.js">
+</script>
+</head>
+<body>
+
+
+
+<form>
+    <div class="ui-widget">
+        <input type="text" name="search" id = "mySearch" placeholder="Search.." onkeyup="myFunction()">
+    </div>
+    <div class="ui-widget">
+        <input type="text" name="autoComplete" id = "autoComplete" placeholder="AutoComplete..">
+    </div>
+    <ul id="myMenu">
+      <li><a href="#"><font color = "white"><b>Department</font></a></li><br>
+      <li><a href="#"><font color = "white">Store</font></a></li><br>
+      <li><a href="#"><font color = "white">Sales</font></a></li><br>
+      <li><a href="#"><font color = "white">Month</font></a></li><br>
+      <li><a href="#"><font color = "white">Year</font></a></li><br>
+      <li><a href="#"><font color = "white">Week</font></a></li><br>
+      <li><a href="#"><font color = "white">Profit</font></a></li><br> 
+    </ul>
+    <p id="demo"></p>
+  </div>
+  
+  
+
+<script>
+    function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+
+$( function() {
+    var ul, li, index;
+    ul = document.getElementById("myMenu");
+    li = ul.getElementsByTagName("li");
+
+    var viewSalesByList = [];
+
+    for (index = 0; index < li.length; index++) {
+        itemText = li[index].getElementsByTagName("a")[0].text;
+        viewSalesByList.push(itemText);
+    }
+
+    $( "#autoComplete" ).autocomplete({
+      source: viewSalesByList,
+      autoFocus: true
+    });
+  } );    
+</script>
+
+</form>
+
+            <div class='tableauPlaceholder' id='viz1536814165485' style='position: relative
+            '><noscript><a href='#'>
+                <img alt='Weekly Sales By Stores ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CM&#47;CMPE-280&#47;Sheet1&#47;1_rss.png' style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz'  style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='CMPE-280&#47;Sheet1' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CM&#47;CMPE-280&#47;Sheet1&#47;1.png' /> 
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+        </object>
+    </div>                
+    <script type='text/javascript'>                    
+    var divElement = document.getElementById('viz1536814165485');                    
+    var vizElement = divElement.getElementsByTagName('object')[0];                    
+    vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.55)+'px';                    
+    var scriptElement = document.createElement('script');                    
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    </script>
+    </body>
+</html>
+

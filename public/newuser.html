@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New User  | Fazt</title>
+    <link rel="stylesheet" type="text/css" href="newuser.css">
+    <link rel="stylesheet"
+          type="text/css"
+          href="css/jquery-ui-lightness/jquery-ui.min.css" />
+    <script type="text/javascript"
+            src="js/jquery.js">
+    </script>
+    <script
+		src="js/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+    type="text/css"
+    href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
+  </head>
+  <body onload = "do_jQuery()">
+      <div class="login-box">
+      <img src="logo3.jpeg" class="avatar" >
+      <h1>Create New Account</h1>
+      <form name = "SignUp">
+        <!-- Register INPUT -->
+        <input type="text" name="EId" placeholder="Enter Employer Id">
+        <input type="text" name="Eu" placeholder="Enter preferred username">
+        <!-- PASSWORD INPUT -->    
+        <input type="password" name="pwd" placeholder="Enter password">
+        
+        <div class = "custom-select" width ="100px;">
+            <select>
+              <option value="0">Select Location</option>
+              <option value="1">California</option>
+              <option value="2">New York</option>
+              <option value="3">Texas</option>
+              <option value="4">Florida</option>
+              <option value="5">New Jersey</option>
+            </select>
+          </div>
+        <!--Button widget has been added -->
+        <a href="main.html"><input type="button" class="btn" onclick = "check(this.form)" id ="submit" name="submit" value="SignUp"></a> 
+        <!--  <a href="main.html"><input type="submit" onclick = "check(this.form)" name="submit" value="SignUp"></a> -->
+         <!-- <input type="button" class="btn" value="Login" id="submit" onclick="validateUser()" /> -->
+        </form>
+        <!--Function for Jquery changes to implement small widgets -->
+        <script language="javascript">
+          function do_jQuery()
+          {
+              //Button widget used
+              $('a, .box input[type=button]').button();
+          }
+      </script>
+        <script language="javascript">
+          function check(form)/*function to check userid & password*/
+          {
+            u_RE = /^[a-zA-Z\-]+$/;
+            u_value = form.Eu.value;
+            id_RE = /^\d+$/;
+            e_value = form.EId.value;
+            pwd_RE = /^.(?=.{5,})(?=.[a-zA-Z])(?=.\d)(?=.[* "]).*$/;
+            p_value = form.pwd.value;
+            console.log(p_value );
+            console.log(e_value );
+
+          /*the following code checkes whether the entered userid and password are matching*/
+          if(e_value.match(id_RE) && u_value.match(u_RE) && p_value.match(pwd_RE))
+          {
+          window.open('login.html')/*opens the target page while successfull signup*/
+          }
+          else
+          {
+          
+          alert("Check: EmloyeeId can be numeric only" + "Username should be alphabets" + "Password can have min 5 characters alhanumeric and atleast 1 special character ! or ?")/*displays error message*/
+          window.open('newuser.html')
+          }
+          }
+          </script>
+
+<script>
+    var x, i, j, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    for (i = 0; i < x.length; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      /*for each element, create a new DIV that will act as the selected item:*/
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+      /*for each element, create a new DIV that will contain the option list:*/
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 0; j < selElmnt.length; j++) {
+        /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+            /*when an item is clicked, update the original select box,
+            and the selected item:*/
+            var y, i, k, s, h;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < s.length; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                for (k = 0; k < y.length; k++) {
+                  y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+              }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function(e) {
+          /*when the select box is clicked, close any other select boxes,
+          and open/close the current select box:*/
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+      /*a function that will close all select boxes in the document,
+      except the current select box:*/
+      var x, y, i, arrNo = [];
+      x = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      for (i = 0; i < y.length; i++) {
+        if (elmnt == y[i]) {
+          arrNo.push(i)
+        } else {
+          y[i].classList.remove("select-arrow-active");
+        }
+      }
+      for (i = 0; i < x.length; i++) {
+        if (arrNo.indexOf(i)) {
+          x[i].classList.add("select-hide");
+        }
+      }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+    </script>
+    </div>
+  </body>
+</html>

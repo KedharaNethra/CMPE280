@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login Form  | Fazt</title>
+    <link rel="stylesheet" href="login.css">
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="css/jquery-ui-lightness/jquery-ui.min.css" />
+    <script type="text/javascript"
+            src="js/jquery.js">
+    </script>
+    <script
+		src="js/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+    type="text/css"
+    href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
+    
+    
+   </head>
+  <body onload = "do_jQuery()">
+
+    <div class="login-box">
+      <img src="logo3.jpeg" class="avatar" alt="Avatar Image">
+      <h1>Login Here</h1>
+      <form name = "Login" >
+        <!-- USERNAME INPUT -->
+        <input type="text" name="username" id="username" class="username" placeholder="Enter username">
+        <!-- PASSWORD INPUT -->    
+        <input type="password" name="password" id="password" class ="password" placeholder="Enter password">
+       <!-- <a href="main.html"><input type="submit" onclick = "do_login_validate(this.form)" name="submit" value="Login"></a> -->
+        <a href="main.html"><input type="button" class="btn" onclick = "do_login_validate(this.form)" name="submit" id="submit" value="Login"></a>
+       <!-- <input type="button" class="btn" value="Login" id="submit" onclick="validateUser()" /> -->
+        <a href="#">Forgot Password?</a><br>
+        <a href="newuser.html">Don't have An account?</a>
+      </form>
+    </body>  
+    <script language="javascript">
+      function do_jQuery()
+      {
+          //Button widget used
+          $('a, .box input[type=button]').button();
+      }
+  </script>
+    <script language="javascript">
+          function do_login_validate(form)
+          {
+            //Javascript regular expression for username pattern match  
+            LoginRE = /^[a-zA-Z\-]+$/;
+            pwd_RE = /^[a-zA-Z\-]+$/;
+            u_value = form.username.value;
+            p_value = form.password.value;
+            if (u_value == "") {
+              window.alert("Please enter username.\n")
+            } 
+            //checks for the username if it is only characters
+            if (u_value.match(LoginRE ) && p_value.match(pwd_RE))
+            {
+            window.open("main.html")/*opens the target page while Id & password matches*/
+            }    
+            else
+            { 
+              window.alert(p_value)   
+              window.alert("Invalid username" + "Only characters A-Z/ a-z allowed" + "Password can have min 5 characters alhanumeric and atleast 1 special character ! or ?")  
+            }
+
+            if (p_value == "") {
+              window.alert("Please enter password.\n")
+            }
+            
+            
+            }
+
+                
+        </script>
+        
+    
+            </div>
+  
+</html>

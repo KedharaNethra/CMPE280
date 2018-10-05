@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<body style="background-color:#33001a;">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/contactus.css">
+</head>
+<body>
+    <header>
+        <table class="row">
+            <tr>
+                <td>
+                    <div class="logo">
+                    <img src= logo3.jpeg>
+                    </div>
+                </td>
+                <td>
+                    <div class="main-nav">
+                    <ul>
+                        <li><a href="/home"> Home </a></li>
+                        <li><a href="/aboutus"> About Us </a></li>
+                        <li><a href="/contactus"> Contact Us </a></li>
+                        <li><a href="/news">News </a></li>
+                        <li><a href="login.html"> Log In </a></li>
+                    </ul>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="canvas" width="200" height="200"></canvas>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                <h1> We Foretell your Ecommerce orders for a better tomorrow</h1>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </header>
+
+<div style="padding-left:16px">
+ 
+</div>
+
+</body>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css" />
+<body>
+<nav class = "navbar navbar-default">
+	<div class = "container-fluid">
+		<a href = "https://www.sourcecodester.com" class = "navbar-brand"></a>
+	</div>
+</nav>
+<div class = "row" id = "wid-resize">
+	<div class  = "col-md-3"></div>
+	<div class  = "col-md-6 well">
+		<h3 class = "text-primary">Drag and drop your Questions</h3>
+		<hr style = "border-top: 1px dotted #8c8b8b;"/>
+			<div class = "pull-left" style = "border:1px #000 dotted; width:430px;">
+			<center><label style = "font-size:9px;" class = "alert-danger"><B> Select your question from below: </B></label></center>
+				<ul  style = "list-style-type:none;" id = "draggable">
+					<li><B> Q. What is the future scope of the Project?</B></li> <BR>
+					<li><B>Q. What algorithm is used for prediction</B></li><BR>
+					<li><B>Q. What is the total number of stores? </B></li><BR>
+					<li><B>Q. What is the size of the data set involved? </B></li><BR>
+					<li><B>Q. What are the sales numbers for each store?</B> </li><BR>
+					<li><B>Q. What story is the project conveying?</B></li>
+					
+				</ul>
+				<p></p>
+			</div>
+			<div class = "pull-right" style = "padding:20px; border:1px #000 dotted; width:400px;">
+				<div class = "form-group">
+					<input type = "text" name = "program" class = "form-control p_lang ui-droppable" />
+					<center><label>Your Questions</label></center>
+					<button class = "btn btn-success pull-left" id = "reset" type = "button"><span class = "glyphicon glyphicon-refresh"></span> Reset</button>
+
+
+				</div>
+				<BR> <BR>
+				<button onclick="myFunction()"> Submit</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Message Received!";
+}
+</script>
+			</div>	
+
+	</div>
+
+</div>
+</body>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script type = "text/javascript">
+  $(document).ready(function(){
+	  $('#reset').on('click', function(){
+		  $('ul').attr('id', 'draggable');
+		  $('.p_lang').removeAttr('disabled', 'disabled');
+		  $('.p_lang').val('');
+	  });
+		$('li').mouseover(function(){
+			$(this).css('cursor', 'pointer');
+		});
+		$( "#draggable li" ).draggable({helper: 'clone'});
+		$(".p_lang").droppable({
+			accept: "#draggable li",
+			drop: function(ev, ui) {
+			$(this).insertAtCaret(ui.draggable.text());
+			$(this).attr('disabled', 'disabled');
+			$("#draggable").removeAttr('id');
+			}
+		});
+  });
+  
+  $.fn.insertAtCaret = function (myValue) {
+  return this.each(function(){
+  if (document.selection) {
+    this.focus();
+    sel = document.selection.createRange();
+    sel.text = myValue;
+    this.focus();
+  }
+  
+  else if (this.selectionStart || this.selectionStart == '0') {
+    var startPos = this.selectionStart;
+    var endPos = this.selectionEnd;
+    var scrollTop = this.scrollTop;
+    this.value = this.value.substring(0, startPos)+ myValue+ this.value.substring(endPos,this.value.length);
+    this.focus();
+    this.selectionStart = startPos + myValue.length;
+    this.selectionEnd = startPos + myValue.length;
+    this.scrollTop = scrollTop;
+  } else {
+    this.value += myValue;
+    this.focus();
+  }
+  });
+};
+</script>
+</html>
