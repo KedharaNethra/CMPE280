@@ -33,7 +33,7 @@
         <!-- PASSWORD INPUT -->    
         <input type="password" name="password" id="password" class ="password" placeholder="Enter password">
        <!-- <a href="main.html"><input type="submit" onclick = "do_login_validate(this.form)" name="submit" value="Login"></a> -->
-        <a href="main.html"><input type="button" class="btn" onclick = "do_login_validate(this.form)" name="submit" id="submit" value="Login"></a>
+        <input type="button" class="btn" onclick = "do_login_validate(this.form)" name="submit" id="submit" value="Login">
        <!-- <input type="button" class="btn" value="Login" id="submit" onclick="validateUser()" /> -->
         <a href="#">Forgot Password?</a><br>
         <a href="newuser.html">Don't have An account?</a>
@@ -54,9 +54,7 @@
             pwd_RE = /^[a-zA-Z\-]+$/;
             u_value = form.username.value;
             p_value = form.password.value;
-            if (u_value == "") {
-              window.alert("Please enter username.\n")
-            } 
+            
             //checks for the username if it is only characters
             if (u_value.match(LoginRE ) && p_value.match(pwd_RE))
             {
@@ -64,12 +62,14 @@
             }    
             else
             { 
-              window.alert(p_value)   
-              window.alert("Invalid username" + "Only characters A-Z/ a-z allowed" + "Password can have min 5 characters alhanumeric and atleast 1 special character ! or ?")  
-            }
+              if (u_value == "") {
+              window.alert("Invalid username" + "Only characters A-Z/ a-z allowed")  
+              
+            } }
 
             if (p_value == "") {
               window.alert("Please enter password.\n")
+              
             }
             
             

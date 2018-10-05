@@ -42,7 +42,7 @@
             </select>
           </div>
         <!--Button widget has been added -->
-        <a href="main.html"><input type="button" class="btn" onclick = "check(this.form)" id ="submit" name="submit" value="SignUp"></a> 
+        <input type="button" class="btn" onclick = "check(this.form)" id ="submit" name="submit" value="SignUp">
         <!--  <a href="main.html"><input type="submit" onclick = "check(this.form)" name="submit" value="SignUp"></a> -->
          <!-- <input type="button" class="btn" value="Login" id="submit" onclick="validateUser()" /> -->
         </form>
@@ -61,7 +61,7 @@
             u_value = form.Eu.value;
             id_RE = /^\d+$/;
             e_value = form.EId.value;
-            pwd_RE = /^.(?=.{5,})(?=.[a-zA-Z])(?=.\d)(?=.[* "]).*$/;
+            pwd_RE = /^[a-zA-Z\-]+$/;
             p_value = form.pwd.value;
             console.log(p_value );
             console.log(e_value );
