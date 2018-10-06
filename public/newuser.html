@@ -31,7 +31,7 @@
         <!-- PASSWORD INPUT -->    
         <input type="password" name="pwd" placeholder="Enter password">
         
-        <div class = "custom-select" width ="100px;">
+        <div class = "custom-select" width ="100px;" id="Loc">
             <select>
               <option value="0">Select Location</option>
               <option value="1">California</option>
@@ -41,6 +41,9 @@
               <option value="5">New Jersey</option>
             </select>
           </div>
+
+         
+
         <!--Button widget has been added -->
         <input type="button" class="btn" onclick = "check(this.form)" id ="submit" name="submit" value="SignUp">
         <!--  <a href="main.html"><input type="submit" onclick = "check(this.form)" name="submit" value="SignUp"></a> -->
@@ -54,6 +57,12 @@
               $('a, .box input[type=button]').button();
           }
       </script>
+
+         <script>
+            //!--selectmenu widget used in lightness theme-->
+          $("Loc").selectmenu();
+         </script>
+
         <script language="javascript">
           function check(form)/*function to check userid & password*/
           {
